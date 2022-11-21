@@ -5,8 +5,12 @@ import { marked } from "marked";
 const defaultText = `
 # Welcome to my React Markdown Previewer!
 
-## This is a sub-heading...
-### And here's some other cool stuff:
+## by Lorenzo Zemp
+### built using ReactJS and TailwindCSS
+
+[Here's](https://lorenzozemp.com) a link to my website!
+
+### The following is an example of Markdown:
 
 Heres some code, \`<div></div>\`, between 2 backticks.
 
@@ -25,7 +29,7 @@ Or _italic_.
 Or... wait for it... **_both!_**
 And feel free to go crazy ~~crossing stuff out~~.
 
-There's also [links](https://www.freecodecamp.org), and
+There's also [links](https://lorenzozemp.com), and
 > Block Quotes!
 
 And if you want to get really crazy, even tables:
@@ -57,16 +61,16 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="font-3xl font-sans font-bold text-center">
-        Markdown Preview
-      </h1>
-      <div id="container">
+      <h1 className="font-3xl font-mono text-center">Markdown Preview</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2" id="container">
         <textarea
+          className="border-none shadow-lg shadow-cyan-300 m-5 p-2 resize-none h-screen"
           id="editor"
           onChange={handleChange}
           defaultValue={text}
         ></textarea>
         <div
+          className="shadow-lg shadow-amber-500 m-5 p-2 h-screen overflow-auto"
           id="preview"
           dangerouslySetInnerHTML={{ __html: marked.parse(text) }}
         ></div>
